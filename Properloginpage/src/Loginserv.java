@@ -10,7 +10,6 @@ import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,16 +36,17 @@ public class Loginserv extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		res.setContentType("text/html");
 		PrintWriter out=res.getWriter();
+		
+		System.out.println("form login....");
+		
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		String name=req.getParameter("name");
 		String password=req.getParameter("password");
 		
 		try {
-			System.out.println("loading......");
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			System.out.println("db loaded....");
 			
 			String sql="select password from signup where name ="+"(?)";
 			pstmt = conn.prepareStatement(sql);
@@ -58,8 +58,6 @@ public class Loginserv extends HttpServlet {
 	        if(password.equals(pas))
 	        {
 	          out.print("successfully logged in");
-	          /*Cookie ck=new Cookie("name",name);  
-	          res.addCookie(ck);*/
 	          HttpSession session=req.getSession();  
 		      session.setAttribute("name",name);
 	          req.getRequestDispatcher("main.jsp").forward(req, res);
@@ -80,7 +78,7 @@ public class Loginserv extends HttpServlet {
 	       }
 	        
 	        
-	        System.out.println("done...");
+	        System.out.println("logged in Successfully...");
 			
 			
 		} catch (ClassNotFoundException e) {

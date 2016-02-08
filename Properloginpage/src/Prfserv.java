@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,26 +40,19 @@ public class Prfserv extends HttpServlet {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		
+		System.out.println("From profile...");
+		
 		RequestDispatcher rd=req.getRequestDispatcher("main.jsp");
 		rd.include(req, res);
 		
-		/*Cookie ck[]=req.getCookies(); 
-		if(ck!=null){
-        String name=ck[0].getValue();  
-        if(!name.equals("")||name!=null){   
-        out.print("<b>Welcome to Profile</b>");  
-        out.print("<br>Welcome, "+name);*/
 		HttpSession session=req.getSession(false);
 		String name=(String)session.getAttribute("name");
-        if(session!=null&&name!=null)
+        if(session!=null && name!=null)
         {   
-        out.print("Hello, "+name+" Welcome to Profile");  
-       
-		
+        
         try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            System.out.println("Connected database successfully...");
 			
 			String query = "select * from signup where name= ?";
 			
@@ -72,10 +64,12 @@ public class Prfserv extends HttpServlet {
 	        	String mob = rs.getString("mob");
 	        	String email = rs.getString("email");
 	        	
+	        	out.println("<center>");
 	        	out.println("<br>NAME: "+Name);
 	        	out.println("<br>Mob : "+mob);
 	        	out.println("<br>Email:"+email);
-	        	
+	        	out.println("</center>");
+	        	 
 	        }
 			
 			
@@ -87,10 +81,11 @@ public class Prfserv extends HttpServlet {
         }
 		//}
 		else{  
-            out.print("Please login first");  
+            out.print("<center>"+"You must login first"+"</center>");  
             req.getRequestDispatcher("login.jsp").include(req, res);  
         } 
-        out.close();  
+        out.close();
+        System.out.println("profile displayed successfully...");
 	}
 
 }

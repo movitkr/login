@@ -9,7 +9,9 @@
 </head>
 <body>
 <h3>Choose_Your_Option</h3>
+<center>
 <input type="submit" value="login" onclick="document.location.href ='login.jsp'"><br><br>
 <input type="submit" value="signup" onclick="document.location.href ='signup.jsp'">
+</center>
 </body>
 </html>

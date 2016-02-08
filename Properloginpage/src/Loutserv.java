@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,33 +32,25 @@ public class Loutserv extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		res.setContentType("text/html");
 		PrintWriter out=res.getWriter();
-		out.print("FROM_LOGOUT");
 		
-		RequestDispatcher rd=req.getRequestDispatcher("main.jsp");
-		rd.include(req, res);
+		System.out.println("from logout.....");
 		
-		/*Cookie ck[]=req.getCookies();  
-        if(ck!=null){  
-        String name=ck[0].getValue(); 
-        if(!name.equals("")||name!=null){  
-        	Cookie cok= new Cookie("name", "");
-    		cok.setMaxAge(0);
-    		res.addCookie(cok);
-    		out.println("sucessfully loged out");
-    		out.println("wanna login again");
-    		req.getRequestDispatcher("login.html").include(req, res);
-        }  
-        }
-        else{  
-            out.print("Please login first");  
-            req.getRequestDispatcher("login.html").include(req, res);  
-        }*/
-		HttpSession session=req.getSession();  
+		HttpSession session=req.getSession(false);
+		if(session != null){
+        RequestDispatcher rd=req.getRequestDispatcher("/main.jsp");
+        rd.include(req, res);
+        out.print("<center>"+"You are successfully logged out!"+"</center>");
         session.invalidate();
-        out.print("You are successfully logged out!");  
-        
+		}
+		else
+		{
+		RequestDispatcher rd=req.getRequestDispatcher("login.jsp");
+		rd.include(req, res);
+		out.print("<center>"+"plz login again"+"</center>");
+			
+		}
         out.close();
-		
+		System.out.println("successfully loged out");
 		
 	}
 

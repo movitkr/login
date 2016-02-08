@@ -35,6 +35,8 @@ public class Signupserv extends HttpServlet {
 		res.setContentType("text/html");
 		PrintWriter out=res.getWriter();
 		
+		System.out.println("from signup....");
+		
 		Connection conn=null;
 		java.sql.PreparedStatement pstmt=null;
 		String name=req.getParameter("name");
@@ -43,11 +45,8 @@ public class Signupserv extends HttpServlet {
 		String email=req.getParameter("email");
 		
 		try {
-			System.out.println("loading....");
 			Class.forName(JD_DRIVER);
-			System.out.println("loaded successfully...");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			System.out.println("Connected database successfully...");
 			
 			String query = "insert into signup(name,password,mob,email) values(?,?,?,?)";
 			
@@ -63,6 +62,7 @@ public class Signupserv extends HttpServlet {
             out.print("<br>you can login now");
             req.getRequestDispatcher("login.jsp").include(req, res);
 			
+            System.out.println("signedup successfully");
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

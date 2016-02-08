@@ -10,10 +10,12 @@
 </head>
 <body>
 <p><center><h3>Login</h3></center><br><br>
-<form action="Loginserv" method="post"><center> 
-Name:<input type="text" name="name"><br>  
-Password:<input type="password" name="password"><br>  
-<input type="submit" value="LOGIN">  </center> 
+<form action="Loginserv" method="post">
+<center> 
+Uname:<input type="text" name="name"><br>  
+Psswd:<input type="password" name="password"><br>  
+<input type="submit" value="LOGIN">
+</center> 
 </form>
 </body>
 </html>
