@@ -62,21 +62,21 @@ public class Loginserv extends HttpServlet {
 	          res.addCookie(ck);*/
 	          HttpSession session=req.getSession();  
 		      session.setAttribute("name",name);
-	          req.getRequestDispatcher("/link.html").forward(req, res);
+	          req.getRequestDispatcher("main.jsp").forward(req, res);
 	        	
 	        }
 	        else
 	        {
 	         out.print("incorrect password!!!!");
 	         out.print("plz login again");
-	         req.getRequestDispatcher("/login.html").include(req, res);
+	         req.getRequestDispatcher("login.jsp").include(req, res);
 	        }
 	       }
 	       else
 	       {
 	    	 out.print("Invalid user!!!");
 	    	 out.print("signup first!!!");
-	    	 req.getRequestDispatcher("/login.html").include(req, res);
+	    	 req.getRequestDispatcher("login.jsp").include(req, res);
 	       }
 	        
 	        

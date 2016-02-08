@@ -61,7 +61,7 @@ public class Signupserv extends HttpServlet {
             System.out.println(count);
             out.print("Sucessfully Signed up");
             out.print("<br>you can login now");
-            req.getRequestDispatcher("login.html").include(req, res);
+            req.getRequestDispatcher("login.jsp").include(req, res);
 			
 			
 		} catch (ClassNotFoundException e) {

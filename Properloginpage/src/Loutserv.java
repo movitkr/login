@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Loutserv
- **/
+ */
 @WebServlet("/Loutserv")
 public class Loutserv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,7 +35,7 @@ public class Loutserv extends HttpServlet {
 		PrintWriter out=res.getWriter();
 		out.print("FROM_LOGOUT");
 		
-		RequestDispatcher rd=req.getRequestDispatcher("link.html");
+		RequestDispatcher rd=req.getRequestDispatcher("main.jsp");
 		rd.include(req, res);
 		
 		/*Cookie ck[]=req.getCookies();  

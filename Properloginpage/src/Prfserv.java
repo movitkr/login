@@ -41,7 +41,7 @@ public class Prfserv extends HttpServlet {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		
-		RequestDispatcher rd=req.getRequestDispatcher("link.html");
+		RequestDispatcher rd=req.getRequestDispatcher("main.jsp");
 		rd.include(req, res);
 		
 		/*Cookie ck[]=req.getCookies(); 
@@ -50,10 +50,10 @@ public class Prfserv extends HttpServlet {
         if(!name.equals("")||name!=null){   
         out.print("<b>Welcome to Profile</b>");  
         out.print("<br>Welcome, "+name);*/
-		HttpSession session=req.getSession(false);  
-        if(session!=null){  
-        String name=(String)session.getAttribute("name");  
-          
+		HttpSession session=req.getSession(false);
+		String name=(String)session.getAttribute("name");
+        if(session!=null&&name!=null)
+        {   
         out.print("Hello, "+name+" Welcome to Profile");  
        
 		
@@ -88,7 +88,7 @@ public class Prfserv extends HttpServlet {
 		//}
 		else{  
             out.print("Please login first");  
-            req.getRequestDispatcher("login.html").include(req, res);  
+            req.getRequestDispatcher("login.jsp").include(req, res);  
         } 
         out.close();  
 	}
