@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Properloginpage</display-name>
+  <welcome-file-list>
+    <welcome-file>welcome.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+  <servlet-name>Loginserv</servlet-name>
+  <servlet-class>Loginserv</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>Loginserv</servlet-name>
+  <url-pattern>/Loginserv</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  <servlet-name>Signupserv</servlet-name>
+  <servlet-class>Signupserv</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>Signupserv</servlet-name>
+  <url-pattern>/Signupserv</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  <servlet-name>Prfserv</servlet-name>
+  <servlet-class>Prfserv</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>Prfserv</servlet-name>
+  <url-pattern>/Prfserv</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  <servlet-name>Loutserv</servlet-name>
+  <servlet-class>Loutserv</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>Loutserv</servlet-name>
+  <url-pattern>/Loutserv</url-pattern>
+  </servlet-mapping>
+</web-app>
